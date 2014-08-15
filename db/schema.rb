@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814063536) do
+ActiveRecord::Schema.define(version: 20140814095642) do
+
+  create_table "curriculums", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -25,5 +32,58 @@ ActiveRecord::Schema.define(version: 20140814063536) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "objectives", force: true do |t|
+    t.string   "name"
+    t.integer  "number"
+    t.string   "slug"
+    t.integer  "subtopic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "objectives", ["subtopic_id"], name: "index_objectives_on_subtopic_id"
+
+  create_table "subjects", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "curriculum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subjects", ["curriculum_id"], name: "index_subjects_on_curriculum_id"
+
+  create_table "subtopics", force: true do |t|
+    t.string   "name"
+    t.integer  "number"
+    t.string   "slug"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subtopics", ["topic_id"], name: "index_subtopics_on_topic_id"
+
+  create_table "syllabuses", force: true do |t|
+    t.string   "version"
+    t.string   "slug"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "syllabuses", ["subject_id"], name: "index_syllabuses_on_subject_id"
+
+  create_table "topics", force: true do |t|
+    t.string   "name"
+    t.integer  "number"
+    t.string   "slug"
+    t.integer  "syllabus_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["syllabus_id"], name: "index_topics_on_syllabus_id"
 
 end
