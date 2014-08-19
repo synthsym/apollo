@@ -9,6 +9,7 @@ gem 'sqlite3'
 # Assets and compilers
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'semantic-ui-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -33,6 +34,8 @@ gem 'oauth-plugin'
 gem 'spring',        group: :development
 gem 'letter_opener', group: :development
 gem 'pry-rails',     group: :development
+gem "better_errors", group: :development
+gem "binding_of_caller", group: :development
 
 #Testing
 gem 'rspec-rails',   group: [:development, :test]
@@ -42,6 +45,7 @@ gem 'factory_girl_rails',  group: [:development, :test]
 
 #Misc.
 gem 'cells'
+gem 'rspec-cells'
 gem 'friendly_id', '~> 5.0.0'
 
 # Use ActiveModel has_secure_password
